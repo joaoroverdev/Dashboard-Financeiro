@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+    <title>Dashboard Financeiro</title>
+</head>
+<body>
+<div class="wrap">
+    <h1>DASHBOARD FINANCEIRO</h1>
+    <div id="hoje"></div>
+
+    <div class="resumo-card">
+        <div class="resumo-receitas">
+            <div class="resumo-title-receitas">
+                RECEITAS
+            </div>
+            <div class="resumo-valor-receitas" id="totalReceitas">
+                —
+            </div>
+        </div>
+
+        <div class="resumo-saldo">
+            <div class="resumo-title-saldo">
+                SALDO ATUAL
+            </div>
+            <div class="resumo-valor-saldo" id="saldo">
+                —
+            </div>
+        </div>
+
+        <div class="resumo-despesas">
+            <div class="resumo-title-despesas">
+                DESPESAS
+            </div>
+            <div class="resumo-valor-despesas" id="totalDespesas">
+                —
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <form id="form-transacao">
+            <h2>
+                NOVO LANÇAMENTO
+            </h2>
+
+            <div class="field-full">
+                <label for="descricao">Descrição</label>
+                <input type="text" id="descricao" required placeholder="Ex: Conta de luz">
+            </div>
+            
+            <div class="field">
+                <label for="tipo">Tipo</label>
+                <select id="tipo" required>
+                    <option value="receita">Receita</option>
+                    <option value="despesa">Despesa</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="categoria">Categoria</label>
+                <input type="text" id="categoria" required placeholder="Ex: Moradia">
+            </div>
+
+            <div class="field">
+                <label for="valor">Valor (R$)</label>
+                <input type="number" id="valor" step="0.01" required placeholder="0,00">
+            </div>
+
+            <div class="field">
+                <label for="data">Data</label>
+                <input type="date" id="data" required>
+            </div>
+
+            <div id="erro-form"></div>
+
+            <div class="submit-row">
+                <button type="submit">LANÇAR</button>
+            </div>
+        </form>
+    </section>
+    
+    <section>
+        <div class="section-head">
+            <h2 class="left">LANÇAMENTOS</h2>
+            <span class="contagem" id="contagem"></span>
+        </div>
+        <div id="lista-transacoes"></div>
+    </section>
+
+    <section>
+        <h2 class="left">POR CATEGORIA</h2>
+        <div id="lista-categorias"></div>
+    </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
