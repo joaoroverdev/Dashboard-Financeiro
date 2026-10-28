@@ -1,0 +1,32 @@
+name: Funcionalidade
+description: Propor uma nova funcionalidade ou melhoria
+title: "feat: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: descricao
+    attributes:
+      label: Descrição
+      description: O que deve ser feito e por quê?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Área
+      options:
+        - API - Transações (CRUD)
+        - API - Dashboard/Resumo
+        - Banco de dados
+        - Front-end (public)
+        - Pipeline CI/CD
+        - Documentação
+    validations:
+      required: true
+  - type: textarea
+    id: criterios
+    attributes:
+      label: Critérios de aceite
+      placeholder: "- [ ] ..."
+    validations:
+      required: true
