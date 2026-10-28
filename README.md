@@ -1,5 +1,5 @@
 # DASHFIN — Dashboard Financeiro (API)
-
+eu
 API REST para controle financeiro pessoal: cadastro de transações (receitas e despesas) e um endpoint de dashboard com o resumo dos valores. O front-end estático (pasta `public/`) é servido pela própria API.
 
 ## Stack
