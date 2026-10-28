@@ -1,0 +1,44 @@
+name: Defeito
+description: Reportar um erro
+title: "fix: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: descricao
+    attributes:
+      label: O que aconteceu
+    validations:
+      required: true
+  - type: textarea
+    id: passos
+    attributes:
+      label: Passos para reproduzir
+      placeholder: |
+        1. ...
+        2. ...
+    validations:
+      required: true
+  - type: textarea
+    id: esperado
+    attributes:
+      label: Comportamento esperado
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Área
+      options:
+        - API - Transações (CRUD)
+        - API - Dashboard/Resumo
+        - Banco de dados
+        - Front-end (public)
+        - Pipeline CI/CD
+        - Documentação
+    validations:
+      required: true
+  - type: input
+    id: ambiente
+    attributes:
+      label: Ambiente
+      placeholder: "Ex.: Windows 11, Node 20, MariaDB 10.11"
