@@ -1,0 +1,45 @@
+name: Rollback (simulação)
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Tag da versão que será restaurada (ex.: v1.0.0)"
+        required: true
+        type: string
+      motivo:
+        description: "Motivo do rollback"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  rollback:
+    name: Validar e simular rollback
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.release_tag }}
+          fetch-depth: 0
+
+      - name: Validar tag informada
+        shell: bash
+        run: |
+          git fetch --tags
+          if ! git rev-parse -q --verify "refs/tags/${{ inputs.release_tag }}" >/dev/null; then
+            echo "Tag não encontrada: ${{ inputs.release_tag }}"
+            exit 1
+          fi
+          echo "Versão selecionada: ${{ inputs.release_tag }}"
+          echo "Commit: $(git rev-list -n 1 "${{ inputs.release_tag }}")"
+
+      - name: Registrar rollback simulado
+        run: |
+          echo "Rollback simulado para ${{ inputs.release_tag }}"
+          echo "Motivo: ${{ inputs.motivo }}"
+          echo "Nenhum servidor ou ambiente real foi alterado."
