@@ -1,6 +1,6 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
-const { validarTransacao } = require('../src/services/transacaoService');
+const validarTransacao = require('../src/utils/validarTransacao');
 
 const transacaoValida = {
     descricao: 'Salário',
